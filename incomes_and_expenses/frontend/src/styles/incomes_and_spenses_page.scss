@@ -1,0 +1,88 @@
+/*Income and spenses page*/
+
+@use "adaptive";
+
+
+
+.modal-window {
+  display: none;
+  max-width: 530px;
+  border: 1px solid #ced4da;
+  border-radius: 12px;
+  background: #fff;
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
+  color: #290661;
+  padding: 40px;
+  @include adaptive.sm {
+    font-size: 14px;
+  }
+  .btn {
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    margin: 6px
+
+  }
+
+}
+
+.information {
+  padding-top: 40px;
+
+  .btn {
+    font-size: 14px;
+    font-weight: 500;
+    margin-right: 5px;
+    @include adaptive.lg {
+      margin-bottom: 10px;
+    }
+    @include adaptive.md {
+      margin-bottom: 0;
+    }
+
+  }
+
+  .card{
+    background: transparent;
+    @include adaptive.md {
+      text-align: center;
+    }
+    .card-body.createNew {
+      visibility: hidden;
+    }
+
+    .card-title{
+      font-size: 28px;
+      color: #290661;
+
+    }
+
+
+    .plus {
+      font-weight: 500;
+      font-size: 28px;
+      color: #ced4da;
+      text-decoration: none;
+    }
+  }
+
+  .form-control {
+    max-width: 397px;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 160%;
+    color: #000;
+
+    .form-control::placeholder {
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 160%;
+      color: #6c757d;
+    }
+
+
+  }
+}
+

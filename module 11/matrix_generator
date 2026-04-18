@@ -1,0 +1,39 @@
+import random
+
+
+
+
+def generate_random_numbers(count):
+    numbers = [str(random.randint(0, 9)) for _ in range(count)]
+    return ' '.join(numbers)
+
+
+
+
+
+
+def gen_matrix(count):
+    matrix = []
+    for i in range(count):
+        martix_row = generate_random_numbers(count).split()
+        matrix_number = [int(i) for i in martix_row]
+
+
+        matrix.append(matrix_number)
+    return matrix
+
+def print_matrix(matrix):
+    for row in matrix:
+        print (row)
+
+def count_line(matrix):
+    result = 0
+    for i in range(len(matrix)):
+        result += matrix[i][i]
+    return result
+
+
+Create = gen_matrix(3)
+print_matrix(Create)
+
+print(count_line(Create))
