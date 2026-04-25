@@ -294,6 +294,7 @@ body {
           padding-left: 0;
           @include adaptive.md {
             width: 100%;
+            z-index: 2;
             position: absolute;
             border: 1px solid #0d6efd;
 
@@ -390,6 +391,9 @@ body {
   .user-info-section {
     height: 96px;
     border-top: $border-style;
+    cursor: pointer;
+
+
 
     @include adaptive.md {
       border: none;
@@ -424,6 +428,8 @@ body {
         font-weight: normal;
         font-size: 14px;
         line-height: 171%;
+        color: #052c65;
+
 
       }
 

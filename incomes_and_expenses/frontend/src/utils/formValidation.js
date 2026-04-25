@@ -1,7 +1,10 @@
 export class FormValidation {
     static password = '';
     static isValid ( value, type ) {
-        if ( ! value ) {
+        if( type === "not_required" ) {
+            return true;
+        }
+        if ( !value ) {
             return false;
         }
         let regEx = ""
@@ -12,11 +15,13 @@ export class FormValidation {
         } else if ( type === 'name' ) {
             regEx = /^[a-zA-Zа-яёА-Яё]+$/
         } else if ( type === 'confirmPassword' ) {
-            if (value !== this.password) {
-                return false;
-            } else {
-                return true;
-            }
+            return value === this.password;
+        }else if ( type === 'select' ) {
+            return value !== "empty";
+        }else if ( type === 'money' ) {
+            regEx = /^[0-9]+$/;
+        }else if ( type === 'date' ) {
+            regEx = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19|20)\d\d$/;
         }
         return regEx.test( value );
     }
@@ -26,6 +31,11 @@ export class FormValidation {
         if ( fields && fields.length > 0 ) {
             let validForm = true;
             for ( let i = 0; i < fields.length; i++) {
+                if ( fields[i].inputType === "money" ) {
+                    if ( fields[i].inputFiled.value.slice(-1) === "$" ) {
+                        fields[i].inputFiled.value = fields[i].inputFiled.value.slice(0, -1);
+                    }
+                }
 
                 if ( this.isValid(fields[i].inputFiled.value, fields[i].inputType) ) {
                     fields[i].inputFiled.classList.remove( "is-invalid" );
@@ -33,6 +43,9 @@ export class FormValidation {
                     fields[i].validationFeedback.style.display = "none";
                     if (fields[i].inputType === "password" ) {
                        this.password =  fields[i].inputFiled.value
+                    }
+                    if ( fields[i].inputType === "money" ) {
+                        fields[i].inputFiled.value =  fields[i].inputFiled.value + '$'
                     }
                 }
                 else {

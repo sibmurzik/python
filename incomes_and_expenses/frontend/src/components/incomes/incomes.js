@@ -1,40 +1,11 @@
 import {Balances} from "../ballance_category/ballance_category";
+import {Categories} from "../../utils/getAllCategories";
 
 export class Incomes extends Balances{
     constructor(sideMenuInstance, openNewRoute) {
         super(openNewRoute);
 
-        this.incomesCategories = [
-            {
-                id: 1,
-                title: 'Депозиты',
-                element: null,
-                editButton: null,
-                deleteButton: null,
 
-            },
-            {
-                id: 2,
-                title: 'Зарплата',
-                element: null,
-                editButton: null,
-                deleteButton: null,
-            },
-            {
-                id: 3,
-                title: 'Сбережения',
-                element: null,
-                editButton: null,
-                deleteButton: null,
-            },
-            {
-                id: 4,
-                title: 'Инвестиции',
-                element: null,
-                editButton: null,
-                deleteButton: null,
-            },
-        ]
 
         if (sideMenuInstance) {
             sideMenuInstance.paintActiveElement("incomesPage");
@@ -44,7 +15,7 @@ export class Incomes extends Balances{
             openNewRoute("/incomes/create");
         })
 
-       this.renderPage(this.incomesCategories , "incomes");
+       this.renderPage( Categories.getIncomesCategories(), "incomes");
         //console.log(this.incomesCategories);
 
 
@@ -62,6 +33,11 @@ export class Incomes extends Balances{
         this.deleteWindow.style.display = "none";
         document.body.style.background = "#fff";
         console.log("Deleting request to server", id)
+    }
+
+
+    static getIncomesCategories() {
+        return this.incomesCategories.map(category => category.title)
     }
 
 

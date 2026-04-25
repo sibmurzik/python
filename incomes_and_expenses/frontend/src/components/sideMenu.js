@@ -22,6 +22,8 @@ export class sideMenu {
         })
 
 
+
+
     }
 
     clearNavigationSection() {
@@ -49,6 +51,9 @@ export class sideMenu {
                 this.dropdownNavigationSection.classList.add('active');
                 this.spenceButton.classList.add('active');
                 break;
+
+            case 'financialPage':
+                this.incomeAndExpensesButton.classList.add('active');
 
         }
     }

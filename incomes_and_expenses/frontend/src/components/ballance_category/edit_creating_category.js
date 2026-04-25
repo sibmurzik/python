@@ -9,11 +9,14 @@ export class CategoryEditCreating {
         }
 
         this.backRoute = '/' + categoryType.split('-')[1];
-        console.log("this back route: ", this.backRoute);
+
 
         this.pageTitle = document.getElementById("editCreatingCategoryTitle");
         this.processingFunction = null;
         this.processingFunctionType = "";
+
+        this.confirmButton = document.getElementById("confirmEditCreating");
+
 
 
         switch (categoryType) {
@@ -21,21 +24,25 @@ export class CategoryEditCreating {
                 this.pageTitle.innerText = "Создание категории доходов";
                 this.processingFunction = this.addCategoryHttpRequest;
                 this.processingFunctionType = "income";
+                this.confirmButton.innerText = "Создать";
                 break;
             case 'edit-incomes':
                 this.pageTitle.innerText = "Редактирование категории доходов";
                 this.processingFunction = this.editCategoryHttpRequest;
                 this.processingFunctionType = "income";
+                this.confirmButton.innerText = "Сохранить";
                 break;
             case 'create-expenses':
                 this.pageTitle.innerText = "Создание категории расходов";
                 this.processingFunction = this.addCategoryHttpRequest;
                 this.processingFunctionType = "expense";
+                this.confirmButton.innerText = "Создать";
                 break;
             case 'edit-expenses':
                 this.pageTitle.innerText = "Редактирование категории расходов";
                 this.processingFunction = this.editCategoryHttpRequest;
                 this.processingFunctionType = "expense";
+                this.confirmButton.innerText = "Сохранить";
                 break;
             default:
                 this.pageTitle.innerText = "Редактирование/создание  категории";
@@ -44,13 +51,14 @@ export class CategoryEditCreating {
 
         }
 
-
-        this.confirmButton = document.getElementById("confirmEditCreating");
         this.confirmButton.addEventListener("click", this.processingFunction.bind(this));
 
         document.getElementById("cancel").addEventListener("click", () => {
             return this.openNewRoute(this.backRoute);
         });
+
+
+
 
         const inputField = document.getElementById("categoryInput");
 

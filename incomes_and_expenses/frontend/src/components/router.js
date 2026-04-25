@@ -5,6 +5,8 @@ import {sideMenu} from "./sideMenu";
 import {Incomes} from "./incomes/incomes";
 import {Expenses} from "./expences/expenses";
 import {CategoryEditCreating} from "./ballance_category/edit_creating_category";
+import {AllFinancialStatistic} from "./financial_statistic_and_operation/all_financial_statistic";
+import {FinancialOperationCreateEdit} from "./financial_statistic_and_operation/finance_operation_creating_editing";
 
 export class Router {
     constructor() {
@@ -98,6 +100,68 @@ export class Router {
                 existSidebar: true,
 
             },
+
+            {
+                route: '/financial',
+                title: 'Доходы и расходы',
+                filePathTemplate: '/templates/financial_statistic/financial_statistic.html',
+                load: () => {
+                    new AllFinancialStatistic(this.sideMenuInstance, this.openNewRoute.bind(this));
+
+                },
+                existSidebar: true,
+
+            },
+
+            {
+                route: '/financial/create/income',
+                title: 'Создание дохода или расхода',
+                filePathTemplate: '/templates/financial_statistic/edit_creating_operation.html',
+                load: () => {
+                    new FinancialOperationCreateEdit(this.sideMenuInstance, this.openNewRoute.bind(this), "create-incomes");
+
+                },
+                existSidebar: true,
+
+            },
+
+            {
+                route: '/financial/create/expense',
+                title: 'Создание дохода или расхода',
+                filePathTemplate: '/templates/financial_statistic/edit_creating_operation.html',
+                load: () => {
+                    new FinancialOperationCreateEdit(this.sideMenuInstance, this.openNewRoute.bind(this), "create-expenses");
+
+                },
+                existSidebar: true,
+
+            },
+
+            {
+                route: '/financial/edit/income',
+                title: 'Редактирование дохода или расхода',
+                filePathTemplate: '/templates/financial_statistic/edit_creating_operation.html',
+                load: () => {
+                    new FinancialOperationCreateEdit(this.sideMenuInstance, this.openNewRoute.bind(this), "edit-incomes");
+
+                },
+                existSidebar: true,
+
+            },
+
+            {
+                route: '/financial/edit/expense',
+                title: 'Редактирование дохода или расхода',
+                filePathTemplate: '/templates/financial_statistic/edit_creating_operation.html',
+                load: () => {
+                    new FinancialOperationCreateEdit(this.sideMenuInstance, this.openNewRoute.bind(this), "edit-expenses");
+
+                },
+                existSidebar: true,
+
+            },
+
+
 
 
             {
