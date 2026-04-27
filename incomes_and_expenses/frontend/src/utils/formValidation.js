@@ -13,7 +13,7 @@ export class FormValidation {
         } else if ( type === 'password' ) {
             regEx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&#]).{8,}$/ ;
         } else if ( type === 'name' ) {
-            regEx = /^[a-zA-Zа-яёА-Яё]+$/
+            regEx = /^[А-ЯЁ][А-ЯЁ-яё\s]{2,}$/;
         } else if ( type === 'confirmPassword' ) {
             return value === this.password;
         }else if ( type === 'select' ) {
